@@ -24,13 +24,40 @@
   <body>
     <!-- enrty point musi istnieć w aktualnym drzeiw DOM dokumentu -->
     <div id="root"></div>
+    <div id="image"></div>
 
     <script type="text/babel">
-      let imie = "BOB";
-      const element = <h1>Witaj, {imie} masz lat: {2+2} !</h1>;
-      const root = ReactDOM.createRoot(document.getElementById("root")); //entry point
-      root.render(element); //zamieniamy kod na pixele wyswietlane przez przegladarke
-      //wewnatrz skryptu czysty js. JSX tylko w wyraeniach ktore mamy renderowac.
+      //komponent funkcyjny ES6
+      //   const Welcome = (props) => {
+      //     return <h1>Cześć, {props.name}</h1>;
+      //   }
+      //Komponent klasowy
+      class Welcome extends React.Component {
+        render() {
+          return <h1>Cześć, {this.props.name}</h1>;
+        }
+      }
+        //wywolujemy komponent i okreslamy jego wartosc
+      
+      //komponent funkcyjny ES5
+      // function Welcome(props) {
+      //   return <h1>Cześć, {props.name}</h1>;
+      // }
+      //zagniezdzanie komponentu
+      // 
+      class App extends React.Component {
+        render() {
+          return (
+          <div>
+          <Welcome name="tomek" />
+          <Welcome name="romek" />
+          <Welcome name="ala" />
+          </div>);
+        }
+      }
+      const element = <App />;
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(element);
     </script>
   </body>
 </html>

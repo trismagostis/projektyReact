@@ -44,12 +44,17 @@
         return "Witaj, nieznajomy.";
       };
 
-      const element = <h1>{getGreeting(user)}</h1>; // jedyne wyrazenie jsx w całym skrypcie
+      const element = (
+        <div>
+          <img src={user.urlAvatar}></img>
+          <h1>{getGreeting(user)}</h1>
+          
+        </div>
+      ); // jedyne wyrazenie jsx w całym skrypcie
       const root = ReactDOM.createRoot(document.getElementById("root")); //entry point
       root.render(element); //zamieniamy kod na pixele wyswietlane przez przegladarke
-      const element1 = <img src={user.urlAvatar}></img>; // jedyne wyrazenie jsx w całym skrypcie
-      const root1 = ReactDOM.createRoot(document.getElementById("image")); //entry point
-      root1.render(element1);// dorobic w jednym elemencie
+      // jedyne wyrazenie jsx w całym skrypcie
+      // dorobic w jednym elemencie
       //JSX to string prawidłowo interpretujący znaczniki html oraz wyrazenia js w nawiasach klamrowych.
       //JSX występuje tylko w elemencie który mamy renderowac
       //pozostały kod w skrypcie to JS
