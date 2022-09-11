@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renderowanie elementu jsx</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.19.0/babel.min.js"
+      integrity="sha512-g9FNDzZ0L1+NX84LEwshW1z3FXXTMZccijKm3c7GQGHP440YRJ5JN57OzrJvdHMEWazpbDyh21x/AaAq+gOmmw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <body>
+    <!-- enrty point musi istnieć w aktualnym drzeiw DOM dokumentu -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class Toggle extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { isToggleOn: true };
+
+          // This binding is necessary to make `this` work in the callback
+          // this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick=()=> {
+          this.setState((prevState) => ({
+            isToggleOn: !prevState.isToggleOn,
+          }));
+        }
+
+        render() {
+          return (
+            <button onClick={this.handleClick}>
+              {this.state.isToggleOn ? "ON" : "OFF"}
+            </button>
+          );
+        }
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<Toggle />);
+      // class LoggingButton extends React.Component {
+      //   // Poniższy kod wymusza dowiązanie `this` wewnątrz handleClick.
+      //   handleClick = () => {
+      //     console.log("this ma wartość:", this);
+      //   };
+      //   render() {
+      //     return <button onClick={this.handleClick}>Kliknij mnie</button>;
+      //   }
+      // }
+      // const root = ReactDOM.createRoot(document.getElementById("root"));
+      // root.render(<LoggingButton />);
+    </script>
+  </body>
+</html>
