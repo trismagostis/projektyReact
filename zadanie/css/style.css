@@ -1,0 +1,20 @@
+.inputBlock{
+    display:block;
+    margin-top: 20px;
+    
+    
+}
+.inputBlock:hover {
+    cursor:pointer;
+}
+
+
+#number:hover {
+    background-color:rgb(117, 223, 241);
+}
+#name:hover {
+    background-color:rgb(117, 223, 241);
+}
+#submit{
+    margin-top: 20px;
+}

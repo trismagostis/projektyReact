@@ -28,33 +28,39 @@
 
     <script type="text/babel">
       //komponent funkcyjny ES6
-      //   const Welcome = (props) => {
-      //     return <h1>Cześć, {props.name}</h1>;
-      //   }
-      //Komponent klasowy
-      class Welcome extends React.Component {
-        render() {
-          return <h1>Cześć, {this.props.name}</h1>;
-        }
-      }
-        //wywolujemy komponent i okreslamy jego wartosc
-      
-      //komponent funkcyjny ES5
-      // function Welcome(props) {
+      // const Welcome = (props) => {
       //   return <h1>Cześć, {props.name}</h1>;
       // }
+      //Komponent klasowy
+      // class Welcome extends React.Component {
+      //   render() {
+      //     return <h1>Cześć, {this.props.name}</h1>;
+      //   }
+      // }
+      //wywolujemy komponent i okreslamy jego wartosc
+
+      //komponent funkcyjny ES5
+      function Welcome(props) {
+        
+        return(
+        <div>
+          <h1>Cześć, {props.name}</h1><h1>masz lat: {props.age}</h1>
+        </div>
+      );}
       //zagniezdzanie komponentu
-      // 
+      //
       class App extends React.Component {
         render() {
           return (
-          <div>
-          <Welcome name="tomek" />
-          <Welcome name="romek" />
-          <Welcome name="ala" />
-          </div>);
+            <div>
+              <Welcome name="tomek" age="20" />
+              <Welcome name="romek" age="15" />
+              <Welcome name="ala" age="10" />
+            </div>
+          );
         }
       }
+      <justin>Hejo</justin>
       const element = <App />;
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(element);

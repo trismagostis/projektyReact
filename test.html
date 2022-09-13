@@ -21,8 +21,20 @@
     ></script>
   </head>
   <body>
+    <div id="root"></div>
     <script type="text/babel">
-        
+      const courseNames = ["c#", "c++", "angular", "zmienilo sie"];
+      const courseList = courseNames.map((item) => <li>{item}</li>);
+      function Welcome(props) {
+        return (
+          <div>
+            <ol>{courseList}</ol>
+          </div>
+        );
+      }
+      const element = <Welcome />;
+      const root = ReactDOM.createRoot(document.getElementById("root")); //entry point
+      root.render(element); //zamieniamy kod na pixele wyswietlane przez przegladarke
     </script>
   </body>
 </html>
