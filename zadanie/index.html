@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Renderowanie elementu jsx</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.19.0/babel.min.js"
+      integrity="sha512-g9FNDzZ0L1+NX84LEwshW1z3FXXTMZccijKm3c7GQGHP440YRJ5JN57OzrJvdHMEWazpbDyh21x/AaAq+gOmmw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <body>
+    <!-- enrty point musi istnieć w aktualnym drzeiw DOM dokumentu -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const coursesTab = [
+        "programowanie w C#",
+        "Kurs Angular dla początkujących",
+        "Kurs Django",
+      ];
+      //   class Courses extends React.Component {
+      //     constructor(props) {
+      //       super(props);
+      //       this.state = { courseNumber: "3" };
+      //     }
+
+      //     render() {
+      // const listItems = this.props.courseNames.map((course) => (
+      //   <li key={course.toString()}>{course}</li>
+      // ));
+      // return (
+      //   <div>
+      //     <h2>liczba kursów {this.props.courseNames.lengh}</h2>
+      //     <ul>{listItems}</ul>
+      //   </div>
+      // );
+      //     }
+      //   }
+      function Courses(props) {
+        function handleSubmit(e) {
+          e.preventDefault();
+          const name = document.getElementById("name");
+          console.log(name.value);
+        }
+        const listItems = props.courseNames.map((course) => (
+          <li key={course.toString()}>{course}</li>
+        ));
+
+        return (
+          <div>
+            <h2>liczba kursów {props.courseNames.length}</h2>
+            <ul>{listItems}</ul>
+
+            <form onSubmit={handleSubmit}>
+              <div id="nameContainer">
+                <label>
+                  Imię i nazwisko:
+                  <input type="text" name="name" id="name"></input>
+                </label>
+              </div>
+              <div id="courseContainer">
+                <label>
+                  Numer kursu:
+                  <input type="number" name="name" id="name"></input>
+                </label>
+              </div>
+              <p>
+                <button type="submit">Wyślij</button>
+              </p>
+            </form>
+          </div>
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root")); //entry point
+      root.render(<Courses courseNames={coursesTab} />); //zamieniamy kod na pixele wyswietlane przez przegladarke
+      //wewnatrz skryptu czysty js. JSX tylko w wyraeniach ktore mamy renderowac.
+    </script>
+  </body>
+</html>
